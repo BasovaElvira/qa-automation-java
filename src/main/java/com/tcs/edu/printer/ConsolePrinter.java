@@ -1,3 +1,4 @@
+package com.tcs.edu.printer;
 /**
  * This class print a message at console
  *
