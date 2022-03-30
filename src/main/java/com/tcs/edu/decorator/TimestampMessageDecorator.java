@@ -16,7 +16,7 @@ public class TimestampMessageDecorator {
      * @param message needed text
      */
     public static String decorate(String message) {
-        String messageToPrint = String.valueOf(messageCount) + " " + Instant.now() + " " + message;
+        var messageToPrint = String.valueOf(messageCount) + " " + Instant.now() + " " + message;
         messageCount++;
         return messageToPrint;
     }
