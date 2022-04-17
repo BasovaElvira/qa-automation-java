@@ -19,7 +19,7 @@ public class MessageService {
         final var finalMessage = String.format("%d %s %s",
                 MessageCountDecorator.addCount(),
                 Instant.now(),
-                SeparationMessageDecorator.addDivision(message, severity));
+                SeparationMessageDecorator.addDivision(severity, message));
         return  finalMessage;
     }
 }
