@@ -18,7 +18,7 @@ public class SeparationMessageDecorator {
      * @param message needed text,
      * @param severity is enum
      */
-    public static String addDivision (String message, Severity severity) {
+    public static String addDivision (Severity severity, String message) {
 
         if (MessageCountDecorator.messageCount % PAGE_SIZE == 0) {
             final var dividedMessage = String.format("%s %s\n---", message, ChoiceOfSeverity.chooseSeverity(severity));
