@@ -1,5 +1,4 @@
-package com.tcs.edu.printer;
-/**
+package com.tcs.edu.printer;/**
  * This class print a message at console
  *
  * @author Basova Elvira
