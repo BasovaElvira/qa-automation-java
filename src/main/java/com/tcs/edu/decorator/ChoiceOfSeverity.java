@@ -10,11 +10,18 @@ public class ChoiceOfSeverity {
 
     public static String chooseSeverity(Severity severity) {
 
+        String severityForPrint;
+
         switch (severity) {
-            case MINOR: return "()";
-            case REGULAR: return "(!)";
-            case MAJOR: return "(!!!)";
-            default: return "WARN: the value doesn't exist";
+            case MINOR:
+                severityForPrint = "()"; break;
+            case REGULAR:
+                severityForPrint = "(!)"; break;
+            case MAJOR:
+                severityForPrint = "(!!!)"; break;
+            default:
+                severityForPrint = "WARN: the value doesn't exist";
         }
+        return severityForPrint;
     }
 }

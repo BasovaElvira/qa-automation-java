@@ -13,9 +13,10 @@ public class SeparationMessageDecorator {
     static final Integer PAGE_SIZE = 2;
 
     /**
-     * Method decorate is adding a separation to message
+     * Method addDivision is adding a separation to message
      * Side effect: message is changed by the separation
-     * @param message needed text
+     * @param message needed text,
+     * @param severity is enum
      */
     public static String addDivision (String message, Severity severity) {
 
