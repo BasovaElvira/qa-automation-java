@@ -16,10 +16,9 @@ import java.time.Instant;
 public class MessageService {
 
     public static String mergeMessage(String message, Severity severity) {
-        final var finalMessage = String.format("%d %s %s",
+        return String.format("%d %s %s",
                 MessageCountDecorator.addCount(),
                 Instant.now(),
                 SeparationMessageDecorator.addDivision(severity, message));
-        return  finalMessage;
-    }
+        }
 }
