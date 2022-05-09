@@ -1,51 +1,49 @@
 package com.tcs.edu.services;
 
 import com.tcs.edu.decorator.*;
+import com.tcs.edu.domain.*;
 import com.tcs.edu.printer.ConsolePrinter;
-
 import java.time.Instant;
 
 /**
- * This class merges messages, exclude null and can change order
+ * This interface merges messages, exclude null and can change order
  * and search doubles
  *
  * @author Basova Elvira
  */
 
-public class MessageService {
+public interface MessageService {
 
-    public static void mergeMessage(Severity severity, String... messages) {
-        for (String currentMessage : messages) {
+    private static void generateMessage(Message[] messageWithoutDoubles, Message[] messages) {
+        for (int n = 0; n < messages.length; n++) {
+            Message currentMessage = messageWithoutDoubles[n];
             if (currentMessage != null) {
                 ConsolePrinter.print(String.format("%d %s %s",
                         MessageCountDecorator.addCount(),
                         Instant.now(),
-                        SeparationMessageDecorator.addDivision(severity, currentMessage)));
+                        SeparationMessageDecorator.addDivision(currentMessage.getSeverity(), currentMessage.getMessage())));
             }
         }
     }
 
-    public static void mergeMessage(Severity severity, Order order, String... messages) {
-        for (String currentMessage : ChangingOrder.changeOrder(order, messages)) {
-            if (currentMessage != null) {
-                ConsolePrinter.print(String.format("%d %s %s",
-                        MessageCountDecorator.addCount(),
-                        Instant.now(),
-                        SeparationMessageDecorator.addDivision(severity, currentMessage)));
-            }
-        }
+    static void mergeMessage(Message... messages) {
+        generateMessage(messages, messages);
     }
 
-    public static void mergeMessage(Severity severity, Order order, Doubling doubling, String... messages) {
-        String[] messageWithoutDoubles = DoubleTracker.checkDoubles(doubling, messages).toArray(String[]::new);
-        for (String currentMessage : ChangingOrder.changeOrder(order, messageWithoutDoubles)) {
-            if (currentMessage != null) {
-                ConsolePrinter.print(String.format("%d %s %s",
-                        MessageCountDecorator.addCount(),
-                        Instant.now(),
-                        SeparationMessageDecorator.addDivision(severity, currentMessage)));
-            }
-        }
+    static void mergeMessage(Order order, Message... messages) {
+        messages = ChangingOrder.changeOrder(order, messages);
+        generateMessage(messages, messages);
     }
+
+    static void mergeMessage(Doubling doubling, Order order, Message... messages) {
+        if(doubling == Doubling.DISTINCT) {
+            messages = ChangingOrder.changeOrder(order, messages);
+            Message[] messageWithoutDoubles = DoubleTracker.deleteDoubles(doubling, messages);
+            generateMessage(messageWithoutDoubles, messages);
+        }
+        else mergeMessage(order, messages);
+    }
+
+
 }
 

@@ -1,12 +1,14 @@
 package com.tcs.edu.decorator;
 
+import com.tcs.edu.domain.*;
+
 /**
  * This class change order
  *
  * @author Basova Elvira
  */
 
-public class ChangingOrder {
+public interface ChangingOrder {
 
     /**
      * Method addDivision is adding a separation to message
@@ -14,10 +16,10 @@ public class ChangingOrder {
      * @param order is enum,
      * @param messages is array;
      */
-    public static String[] changeOrder(Order order, String... messages) {
+    static Message[] changeOrder(Order order, Message... messages) {
         switch (order) {
             case DESK:
-                String[] reverse = new String[messages.length];
+                Message[] reverse = new Message[messages.length];
                 for (int i = messages.length - 1; i >= 0; i--) {
                     reverse[i] = messages[messages.length - 1 - i];
                 }
