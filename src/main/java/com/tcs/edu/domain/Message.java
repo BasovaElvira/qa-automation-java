@@ -4,8 +4,8 @@ import com.tcs.edu.enums.Severity;
 
 public class Message {
 
-    private static Severity severity;
-    private static String message;
+    private Severity severity;
+    private String message;
 
     public Message(Severity severity, String message) {
         this.severity = severity;
