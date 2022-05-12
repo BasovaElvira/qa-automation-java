@@ -1,6 +1,8 @@
 package com.tcs.edu.decorator;
 
 import com.tcs.edu.domain.*;
+import com.tcs.edu.enums.*;
+import com.tcs.edu.interfaces.*;
 
 /**
  * This class change order
@@ -8,7 +10,7 @@ import com.tcs.edu.domain.*;
  * @author Basova Elvira
  */
 
-public interface ChangingOrder {
+public class ChangingOrderImpl implements ChangingOrder {
 
     /**
      * Method addDivision is adding a separation to message
@@ -16,7 +18,8 @@ public interface ChangingOrder {
      * @param order is enum,
      * @param messages is array;
      */
-    static Message[] changeOrder(Order order, Message... messages) {
+    @Override
+    public Message[] changeOrder(Order order, Message... messages) {
         switch (order) {
             case DESK:
                 Message[] reverse = new Message[messages.length];

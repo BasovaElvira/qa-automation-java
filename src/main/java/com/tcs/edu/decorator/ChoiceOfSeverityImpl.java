@@ -1,18 +1,22 @@
 package com.tcs.edu.decorator;
 
+import com.tcs.edu.enums.*;
+import com.tcs.edu.interfaces.*;
+
 /**
  * This class chooses severity
  *
  * @author Basova Elvira
  */
 
-public interface ChoiceOfSeverity {
+public class ChoiceOfSeverityImpl implements ChoiceOfSeverity {
 
     /**
      * @param severity is Enum
      * @return add severity to message
      */
-    static String chooseSeverity(Severity severity) {
+    @Override
+    public String chooseSeverity(Severity severity) {
 
         String severityForPrint;
 
