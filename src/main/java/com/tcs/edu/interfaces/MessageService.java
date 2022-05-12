@@ -5,7 +5,7 @@ import com.tcs.edu.enums.*;
 
 public interface MessageService {
 
-    void generateMessage(Message[] messageWithoutDoubles, Message[] messages);
+
 
     void log(Message... messages);
 
