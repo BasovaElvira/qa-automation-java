@@ -1,14 +1,17 @@
 package com.tcs.edu.decorator;
 
 import com.tcs.edu.domain.*;
+import com.tcs.edu.enums.*;
+import com.tcs.edu.interfaces.*;
 
-public interface DoubleTracker {
+public class DoubleTrackerImpl implements DoubleTracker {
 
     /**
      * @param messages array of Message
      * @return delete doubles in messages
      */
-    public static Message[] deleteDoubles (Doubling doubling, Message... messages) {
+    @Override
+    public Message[] deleteDoubles (Doubling doubling, Message... messages) {
         Message[] messagesOutput = new Message[messages.length];
         if (messages.length != 0) {
             messagesOutput[0] = messages[0];
@@ -27,7 +30,7 @@ public interface DoubleTracker {
      * @param messages array of Message
      * @return looking for doubles in messages
      */
-    public static boolean checkDoubles(Message message, Message... messages) {
+    public boolean checkDoubles(Message message, Message... messages) {
         if (message != null) {
             for (Message inMessage : messages) {
                 if (inMessage != null && inMessage.getMessage().equals(message.getMessage())) {
