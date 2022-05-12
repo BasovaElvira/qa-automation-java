@@ -5,14 +5,14 @@ package com.tcs.edu.printer;/**
  */
 
 
-public class ConsolePrinter {
+public interface ConsolePrinter {
 
     /**
      * Method print is printing the message which you want
      * Side effect: message at console
      * @param message needed text
      */
-    public static void print(String message) {
+    static void print(String message) {
         System.out.println(message);
     }
 

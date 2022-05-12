@@ -6,9 +6,13 @@ package com.tcs.edu.decorator;
  * @author Basova Elvira
  */
 
-public class ChoiceOfSeverity {
+public interface ChoiceOfSeverity {
 
-    public static String chooseSeverity(Severity severity) {
+    /**
+     * @param severity is Enum
+     * @return add severity to message
+     */
+    static String chooseSeverity(Severity severity) {
 
         String severityForPrint;
 
