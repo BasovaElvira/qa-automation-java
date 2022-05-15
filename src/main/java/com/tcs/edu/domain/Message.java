@@ -1,6 +1,7 @@
 package com.tcs.edu.domain;
 
 import com.tcs.edu.enums.Severity;
+import java.util.*;
 
 public class Message {
 
@@ -24,5 +25,24 @@ public class Message {
         return message;
     }
 
+    @Override
+    public String toString() {
+        return "Message{" +
+                "severity=" + severity +
+                ", message='" + message + '\'' +
+                '}';
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Message message1 = (Message) o;
+        return severity == message1.severity && Objects.equals(message, message1.message);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(severity, message);
+    }
 }
