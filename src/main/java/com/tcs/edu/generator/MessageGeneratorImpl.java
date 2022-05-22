@@ -17,7 +17,7 @@ public class MessageGeneratorImpl extends ValidatedService implements MessageGen
                         new TimeStampDecoratorImpl().addTimeStamp(),
                         new SeparationMessageDecoratorImpl().addDivision(currentMessage.getSeverity(), currentMessage.getMessage())));
             } catch (IllegalArgumentException | NullPointerException e) {
-                throw new LogException("message = null", e);
+                throw new LogException("message can not be null", e);
             }
             finally {
                 continue;
