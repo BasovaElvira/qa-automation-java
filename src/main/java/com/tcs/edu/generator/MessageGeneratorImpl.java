@@ -11,11 +11,16 @@ public class MessageGeneratorImpl extends ValidatedService implements MessageGen
     public void generateMessage(Message[] messageWithoutDoubles, Message[] messages) {
         for (int n = 0; n < messages.length; n++) {
             Message currentMessage = messageWithoutDoubles[n];
-            if (super.isArgsValid(currentMessage.getMessage()) == true) {
+            try {super.isArgsValid(currentMessage.getMessage());
                 new ConsolePrinter().print(String.format("%d %s %s",
                         new MessageCountDecoratorImpl().addCount(),
                         new TimeStampDecoratorImpl().addTimeStamp(),
                         new SeparationMessageDecoratorImpl().addDivision(currentMessage.getSeverity(), currentMessage.getMessage())));
+            } catch (IllegalArgumentException | NullPointerException e) {
+                throw new LogException("message = null", e);
+            }
+            finally {
+                continue;
             }
         }
     }

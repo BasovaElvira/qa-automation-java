@@ -13,6 +13,8 @@ public class Message {
         this.message = message;
     }
 
+    public Message() {};
+
     public Message(String message) {
         this(Severity.MINOR, message);
     }

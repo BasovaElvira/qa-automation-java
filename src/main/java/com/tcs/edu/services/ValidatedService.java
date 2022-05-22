@@ -1,12 +1,10 @@
 package com.tcs.edu.services;
 
-import com.tcs.edu.domain.*;
-
 public abstract class ValidatedService {
 
-    public boolean isArgsValid(String message) {
-        if (message == null) { return false;}
-        if (message.isEmpty()) { return false;}
-        return true;
+    public void isArgsValid(String message) {
+        if (message == null) { throw new IllegalArgumentException("message is null");}
+        if (message.isEmpty()) {throw new NullPointerException("message.getBody() is null");}
+
     }
 }
