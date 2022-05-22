@@ -1,5 +1,11 @@
 package com.tcs.edu.services;
 
+/**
+ * This class checks Message
+ *
+ * @author Basova Elvira
+ */
+
 public abstract class ValidatedService {
 
     public void isArgsValid(String message) {

@@ -6,6 +6,12 @@ import com.tcs.edu.interfaces.*;
 import com.tcs.edu.printer.*;
 import com.tcs.edu.services.*;
 
+/**
+ * This class combines message
+ *
+ * @author Basova Elvira
+ */
+
 public class MessageGeneratorImpl extends ValidatedService implements MessageGenerator {
     @Override
     public void generateMessage(Message[] messageWithoutDoubles, Message[] messages) {
