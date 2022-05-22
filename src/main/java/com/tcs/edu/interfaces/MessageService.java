@@ -5,8 +5,6 @@ import com.tcs.edu.enums.*;
 
 public interface MessageService {
 
-
-
     void log(Message... messages);
 
     void log(Order order, Message... messages);

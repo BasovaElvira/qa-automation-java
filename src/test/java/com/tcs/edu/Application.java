@@ -10,15 +10,15 @@ public class Application {
     public static void main(String[] args) {
 
         new DecoratorMessageService().log(
-                new Message("Hello11"),
-                new Message("Hello11"),
+                new Message(null),
+                new Message(null),
                 new Message("Hello11"),
                 new Message("Hello11")
         );
 
         new DecoratorMessageService().log(
                 Order.DESK,
-                new Message(Severity.REGULAR,"Hello12"),
+                new Message(Severity.REGULAR,null),
                 new Message(Severity.MAJOR,"Hello22"),
                 new Message(Severity.REGULAR,"Hello32"),
                 new Message(Severity.MAJOR,"Hello42")
