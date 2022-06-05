@@ -17,9 +17,9 @@ import java.util.stream.Collectors;
 public class HashMapMessageRepository implements MessageRepository {
     private Map<String, Message> messages = new HashMap<>();
     @Override
-    public UUID create(Message message) {
-        final UUID keyString = UUID.randomUUID();
-        messages.put(keyString.toString(), message);
+    public String create(Message message) {
+        final String keyString = UUID.randomUUID().toString();
+        messages.put(keyString, message);
         return keyString;
     }
 
@@ -30,7 +30,7 @@ public class HashMapMessageRepository implements MessageRepository {
      * @param key needed UUID
      */
     @Override
-    public Message findByPrimaryKey(UUID key) {
+    public Message findByPrimaryKey(String key) {
         return messages.get(key);
     }
 

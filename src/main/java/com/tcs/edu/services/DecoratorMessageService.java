@@ -23,14 +23,14 @@ public class DecoratorMessageService implements MessageService {
 
     private MessageRepository messageRepository = new HashMapMessageRepository();
 
-    public UUID collectLog(Message message) {
+    public String collectLog(Message message) {
         return messageRepository.create(message);
     }
 
     @Override
-    public UUID[] log(Message... messages) {
+    public String[] log(Message... messages) {
         new MessageGeneratorImpl().generateMessage(messages, messages);
-        UUID[] hashString = new UUID[messages.length];
+        String[] hashString = new String[messages.length];
         for (int i = 0; i < messages.length; i++) {
             hashString[i] = messageRepository.create(messages[i]);
         }
@@ -38,24 +38,24 @@ public class DecoratorMessageService implements MessageService {
     }
 
     @Override
-    public UUID[]  log(Order order, Message... messages) {
+    public String[] log(Order order, Message... messages) {
         messages = new ChangingOrderImpl().changeOrder(order, messages);
         new MessageGeneratorImpl().generateMessage(messages, messages);
-        UUID[] hashString = new UUID[messages.length];
+        String[] hashString = new String[messages.length];
         for (int i = 0; i < messages.length; i++) {
             hashString[i] = messageRepository.create(messages[i]);
         }
         return  hashString;
     }
     @Override
-    public UUID[] log(Doubling doubling, Order order, Message... messages) {
+    public String[] log(Doubling doubling, Order order, Message... messages) {
         if(doubling == Doubling.DISTINCT) {
             messages = new ChangingOrderImpl().changeOrder(order, messages);
             Message[] messageWithoutDoubles = new DoubleTrackerImpl().deleteDoubles(doubling, messages);
             new MessageGeneratorImpl().generateMessage(messageWithoutDoubles, messages);
         }
         else log(order, messages);
-        UUID[] hashString = new UUID[messages.length];
+        String[] hashString = new String[messages.length];
         for (int i = 0; i < messages.length; i++) {
             hashString[i] = messageRepository.create(messages[i]);
         }
@@ -63,7 +63,7 @@ public class DecoratorMessageService implements MessageService {
     }
 
     @Override
-    public Message findByPrimaryKey(UUID key) {
+    public Message findByPrimaryKey(String key) {
         return messageRepository.findByPrimaryKey(key);
     }
 
