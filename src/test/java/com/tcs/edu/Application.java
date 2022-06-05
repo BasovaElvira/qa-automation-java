@@ -15,15 +15,16 @@ public class Application {
 
         MessageService service = new DecoratorMessageService();
 
-        final UUID[] generatedKeys1 = service.log(
-                new Message("Hello11"),
-                new Message("Hello11"),
-                new Message("Hello11"),
-                new Message("Hello11")
+        final String[] generatedKeys1 = service.log(
+                new Message("Hello1"),
+                new Message("Hello2"),
+                new Message("Hello3"),
+                new Message("Hello4")
         );
         System.out.println("===================");
         for (int i = 0; i < generatedKeys1.length; i++) {
-            System.out.println("отдельный вывод лога: " + service.findByPrimaryKey(generatedKeys1[i]));
+            String m = "отдельный вывод лога: " + service.findByPrimaryKey(generatedKeys1[i]);
+            System.out.println(m);
         }
         System.out.println("===================");
 
@@ -34,7 +35,7 @@ public class Application {
         }
         System.out.println("===================");
 
-        final UUID[] generatedKeys2 = service.log(
+        final String[] generatedKeys2 = service.log(
                 Order.DESK,
                 new Message(Severity.REGULAR,"Hello21"),
                 new Message(Severity.MAJOR,"Hello22"),
@@ -47,7 +48,7 @@ public class Application {
         }
         System.out.println("===================");
 
-        final UUID[] generatedKeys3 = service.log(
+        final String[] generatedKeys3 = service.log(
                 Doubling.DISTINCT,
                 Order.DESK,
                 new Message("Hello13"),

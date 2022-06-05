@@ -8,13 +8,13 @@ import java.util.UUID;
 
 public interface MessageService {
 
-    UUID[] log(Message... messages);
+    String[] log(Message... messages);
 
-    UUID[] log(Order order, Message... messages);
+    String[] log(Order order, Message... messages);
 
-    UUID[] log(Doubling doubling, Order order, Message... messages);
+    String[] log(Doubling doubling, Order order, Message... messages);
 
-    Message findByPrimaryKey(UUID key);
+    Message findByPrimaryKey(String key);
 
     Collection<Message> findAll();
 
