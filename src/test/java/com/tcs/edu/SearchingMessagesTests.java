@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * TestCase
  */
 @Nested
-public class SearchingMessages {
+public class SearchingMessagesTests {
     /**
      * Test method
      *
