@@ -10,13 +10,12 @@ Build the Docker image
 ======================
 ```shell
 cd app.codegen
-docker buildx build --tag tinkoff-edu-app:1.0.0 .
 ```
 
 Run containerized app
 =====================
 ```shell
-docker run --detach --publish 8080:8080 tinkoff-edu-app:1.0.0
+docker run --detach --publish 8080:8080  tinkoff-edu-app:1.0.0
 ```
 
 API info
