@@ -1,12 +1,20 @@
 import io.restassured.RestAssured;
 import io.restassured.authentication.PreemptiveBasicAuthScheme;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
 public class ApiDemoTest {
+
+    private Connection connection;
+
     @BeforeAll
     public static void setUpAuth() {
         PreemptiveBasicAuthScheme authScheme = new PreemptiveBasicAuthScheme();
