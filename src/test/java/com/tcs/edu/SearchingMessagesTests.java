@@ -23,6 +23,7 @@ public class SearchingMessagesTests {
      *
      * BDD
      */
+
     @Nested
     @DisplayName("Homework 12, task 1, searching by primary key")
     class SearchingByPrimaryKey {
